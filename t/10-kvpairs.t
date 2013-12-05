@@ -46,8 +46,8 @@ foreach my $set ( @sets ){
   cmp_ok( $it , '==' , 3 , "We went though the iteration 3 times");
 
   my @kv = $set->next_kvpair();
-  cmp_ok( @kv[0] , '==' , 1 , "Got first kv pair (1)");
-  cmp_ok( @kv[1] , 'eq' , 'Thing1' , "And it matches 'Thing1'");
+  cmp_ok( $kv[0] , '==' , 1 , "Got first kv pair (1)");
+  cmp_ok( $kv[1] , 'eq' , 'Thing1' , "And it matches 'Thing1'");
 
   ok( my $two = $set->lookup(2) , "Ok can lookup 2");
   cmp_ok( $two , 'eq' , 'Thing2' , "Got the right thing back");

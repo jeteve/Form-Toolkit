@@ -5,7 +5,7 @@ use Form::Toolkit::Form;
 use DateTime;
 
 ok( my $f = Form::Toolkit::Form->new() );
-diag($f->meta->id());
+# diag($f->meta->id());
 ok( $f->meta->id() =~ /^form_/ , "Ok form id is prefixed correctly");
 ok( $f->id() , "Still ok to call deprecated id");
 

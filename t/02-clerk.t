@@ -10,9 +10,9 @@ use DateTime;
 
 ok( my $f = Form::Toolkit::Test->new() );
 ok( scalar( @{$f->fields()} ) , "Ok form has fields");
-foreach my $field ( @{$f->fields() }){
-  diag($field->name().' '.join(',' , $field->meta->linearized_isa()));
-}
+# foreach my $field ( @{$f->fields() }){
+#   diag($field->name().' '.join(',' , $field->meta->linearized_isa()));
+# }
 
 
 $f->clear();
@@ -24,7 +24,7 @@ ok( my $clerk = Form::Toolkit::Clerk::Hash->new( source => { field_String => 'Bl
 ok( $clerk->fill_form($f) , "Ok the clerk can fill the form" );
 ok( $f->field('field_Boolean')->value() , "Ok boolean field is true");
 ok( $f->field('mandatory_and_long')->has_errors() , "Ok mandatory and long string has errors");
-diag(join(',' , @{$f->field('mandatory_and_long')->errors()} )  );
+## diag(join(',' , @{$f->field('mandatory_and_long')->errors()} )  );
 $f->reset();
 
 
