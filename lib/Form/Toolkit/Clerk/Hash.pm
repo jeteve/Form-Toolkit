@@ -1,6 +1,5 @@
 package Form::Toolkit::Clerk::Hash;
 use Moose;
-use DateTime::Format::ISO8601;
 
 extends qw/Form::Toolkit::Clerk/;
 

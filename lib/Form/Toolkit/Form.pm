@@ -2,6 +2,8 @@ package Form::Toolkit::Form;
 use Moose -traits => 'Form::Toolkit::Meta::Class::Trait::HasID';
 use Class::MOP;
 
+use Form::Toolkit::Clerk::Hash;
+
 use Form::Toolkit::Field;
 use Form::Toolkit::Field::String;
 
@@ -9,18 +11,11 @@ use Scalar::Util;
 
 with qw(MooseX::Clone);
 
-
 =head1 NAME
 
 Form::Toolkit::Form - A Moose base class for Form implementation
 
-=head1 VERSION
-
-Version 0.02
-
 =cut
-
-our $VERSION = '0.03';
 
 __PACKAGE__->meta->id_prefix('form_');
 
@@ -301,64 +296,29 @@ sub values_hash{
   return $ret;
 }
 
-=head1 AUTHOR
+=head2 fill_hash
 
-Jerome Eteve, C<< <jerome.eteve at gmail.com> >>
+Shortcut to fill this form with a pure Perl hash. After calling this,
+the form will be validated and populated with error messages if necessary.
 
-=head1 BUGS
+Usage:
 
-Please report any bugs or feature requests to C<bug-jcom-form at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Form::Toolkit-Form>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+ $this->fill_hash({ field1 => 'value' , field2 => undef , field3 => [ 'a' , 'b' , 'c' ]});
 
+ $this->fill_hash($another_form->values_hash());
 
+ if( $this->has_errors() ){
 
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Form::Toolkit::Form
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Form::Toolkit-Form>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Form::Toolkit-Form>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Form::Toolkit-Form>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Form::Toolkit-Form/>
-
-=back
-
-
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2011 Jerome Eteve.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
-
+ }
 
 =cut
+
+sub fill_hash{
+  my ($self, $hash) = @_;
+  $hash //= {};
+  Form::Toolkit::Clerk::Hash->new({ source => $hash })->fill_form($self);
+}
+
 
 __PACKAGE__->meta->make_immutable();
 1; # End of Form::Toolkit::Form

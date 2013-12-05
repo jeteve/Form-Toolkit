@@ -27,7 +27,7 @@ after 'validate' => sub{
   unless( ref($v) ){
     unless( $self->allow_blank() ){
       if( $v =~ /^\s*$/ ){
-        $self->add_error('You cannot leave this field blank');
+        $self->add_error('This field is mandatory');
       }
     }
   }

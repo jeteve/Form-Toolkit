@@ -71,7 +71,8 @@ my @input_hashes = (
 
 foreach my $input_hash ( @input_hashes ){
   ## Test valid input
-  Form::Toolkit::Clerk::Hash->new( source => $input_hash )->fill_form($f);
+  ## Form::Toolkit::Clerk::Hash->new( source => $input_hash )->fill_form($f);
+  $f->fill_hash($input_hash);
   ## diag(Dumper($f->dump_errors()));
   ok( !$f->has_errors() , "Ok not errors");
   my $h_f = $f->values_hash();
