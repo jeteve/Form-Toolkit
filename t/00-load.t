@@ -3,8 +3,8 @@
 use Test::More tests => 1;
 
 BEGIN {
-    use_ok( 'Form::Toolkit::Form' ) || print "Bail out!
+    use_ok( 'Form::Toolkit' ) || print "Bail out!
 ";
 }
 
-diag( "Testing Form::Toolkit::Form $JCOM::Form::VERSION, Perl $], $^X" );
+diag( "Testing Form::Toolkit::Form $Form::Toolkit::VERSION, Perl $], $^X" );
