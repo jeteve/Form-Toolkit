@@ -1,11 +1,11 @@
-package JCOM::Form::Field::Boolean;
+package Form::Toolkit::Field::Boolean;
 use Moose;
 
-extends qw/JCOM::Form::Field/;
+extends qw/Form::Toolkit::Field/;
 
 =head1 NAME
 
-JCOM::Form::Field::String - A Pure and single boolean field. Could render as a checkbox.
+Form::Toolkit::Field::String - A Pure and single boolean field. Could render as a checkbox.
 
 =head1 NOTES
 

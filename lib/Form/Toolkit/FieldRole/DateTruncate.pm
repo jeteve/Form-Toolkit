@@ -1,11 +1,11 @@
-package JCOM::Form::FieldRole::DateTruncate;
+package Form::Toolkit::FieldRole::DateTruncate;
 use Moose::Role;
 use DateTime;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::DateTruncate - Truncate a Date to the given date_truncation.
+Form::Toolkit::FieldRole::DateTruncate - Truncate a Date to the given date_truncation.
 
 =cut
 

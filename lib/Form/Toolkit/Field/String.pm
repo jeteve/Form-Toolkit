@@ -1,11 +1,11 @@
-package JCOM::Form::Field::String;
+package Form::Toolkit::Field::String;
 use Moose;
 
-extends qw/JCOM::Form::Field/;
+extends qw/Form::Toolkit::Field/;
 
 =head1 NAME
 
-JCOM::Form::Field::String - A Pure and single string field.
+Form::Toolkit::Field::String - A Pure and single string field.
 
 =cut
 

@@ -1,14 +1,14 @@
-package JCOM::Form::FieldRole::Email;
+package Form::Toolkit::FieldRole::Email;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole
-        JCOM::Form::FieldRole::Trimmed
+with qw/Form::Toolkit::FieldRole
+        Form::Toolkit::FieldRole::Trimmed
        /;
 
 use Mail::RFC822::Address;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::Email - A Role that checks if the value looks like an email.
+Form::Toolkit::FieldRole::Email - A Role that checks if the value looks like an email.
 
 =cut
 

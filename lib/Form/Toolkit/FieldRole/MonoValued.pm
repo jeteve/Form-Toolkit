@@ -1,10 +1,10 @@
-package JCOM::Form::FieldRole::MonoValued;
+package Form::Toolkit::FieldRole::MonoValued;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::MonoValued - A Role that makes a _Set_ field mono valued.
+Form::Toolkit::FieldRole::MonoValued - A Role that makes a _Set_ field mono valued.
 
 =cut
 

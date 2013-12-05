@@ -3,11 +3,11 @@ use strict;
 use warnings;
 use Test::More;
 use Test::Exception;
-use JCOM::Form;
-use JCOM::Form::Clerk::Hash;
-use JCOM::KVPairs::Pure;
+use Form::Toolkit::Form;
+use Form::Toolkit::Clerk::Hash;
+use Form::Toolkit::KVPairs::Pure;
 
-# ok( my $f = JCOM::Form::Test->new() );
+# ok( my $f = Form::Toolkit::Test->new() );
 # ok( scalar( @{$f->fields()} ) , "Ok form has fields");
 # foreach my $field ( @{$f->fields() }){
 #   diag($field->name().' '.join(',' , $field->meta->linearized_isa()));
@@ -15,7 +15,7 @@ use JCOM::KVPairs::Pure;
 
 
 # $f->clear();
-# ok( my $clerk = JCOM::Form::Clerk::Hash->new( source => { field_String => 'Blabla' , field_Date => '2011-10-10',
+# ok( my $clerk = Form::Toolkit::Clerk::Hash->new( source => { field_String => 'Blabla' , field_Date => '2011-10-10',
 #                                                           field_Boolean => 'Something true',
 #                                                         } ) );
 # ok( $clerk->fill_form($f) , "Ok the clerk can fill the form" );
@@ -26,7 +26,7 @@ use JCOM::KVPairs::Pure;
 
 package MyFormSet;
 use Moose;
-extends qw/JCOM::Form/;
+extends qw/Form::Toolkit::Form/;
 
 sub build_fields{
   my ($self) = @_;
@@ -40,36 +40,36 @@ package main;
 
 my $f = MyFormSet->new();
 ## Test field_Set
-JCOM::Form::Clerk::Hash->new( source => { aset => 1 } )->fill_form($f);
+Form::Toolkit::Clerk::Hash->new( source => { aset => 1 } )->fill_form($f);
 ok( !$f->has_errors() , "Ok not errors");
 $f->clear();
 $f->field('aset')->add_role('Mandatory');
-JCOM::Form::Clerk::Hash->new( source => {} )->fill_form($f);
+Form::Toolkit::Clerk::Hash->new( source => {} )->fill_form($f);
 ok($f->has_errors() , "Ok got error, because of mandatory");
 
 $f->clear();
-JCOM::Form::Clerk::Hash->new( source => { aset => [ 1, 2 ] } )->fill_form($f);
+Form::Toolkit::Clerk::Hash->new( source => { aset => [ 1, 2 ] } )->fill_form($f);
 ok(! $f->has_errors() , "Ok No error again");
 
-$f->field('aset')->add_role('InKVPairs')->kvpairs(JCOM::KVPairs::Pure
+$f->field('aset')->add_role('InKVPairs')->kvpairs(Form::Toolkit::KVPairs::Pure
                                                   ->new({ array => [ { 1 => 'One'},
                                                                      { 2 => 'Two'},
                                                                      { 3 => 'Three'}
                                                                    ]}));
 $f->clear();
-JCOM::Form::Clerk::Hash->new( source => { aset => [ 1, 2 , 4 ] } )->fill_form($f);
+Form::Toolkit::Clerk::Hash->new( source => { aset => [ 1, 2 , 4 ] } )->fill_form($f);
 ok( $f->has_errors() , "Form has errors, as 4 is not in the list of allowed values");
 
 $f->clear();
-JCOM::Form::Clerk::Hash->new( source => { aset => [ 1, 2 ] } )->fill_form($f);
+Form::Toolkit::Clerk::Hash->new( source => { aset => [ 1, 2 ] } )->fill_form($f);
 ok( ! $f->has_errors() , "Form has no errors. Only added allowed values");
 
 $f->field('aset')->add_role('MonoValued');
 $f->clear();
-JCOM::Form::Clerk::Hash->new( source => { aset => [ 1, 2 ] } )->fill_form($f);
+Form::Toolkit::Clerk::Hash->new( source => { aset => [ 1, 2 ] } )->fill_form($f);
 ok($f->has_errors() , "Ok Error. Should be monovalued");
 $f->clear();
-JCOM::Form::Clerk::Hash->new( source => { aset => [ 2 ] } )->fill_form($f);
+Form::Toolkit::Clerk::Hash->new( source => { aset => [ 2 ] } )->fill_form($f);
 ok(!$f->has_errors() , "Mono valued => no error");
 ok( $f->field('aset')->has_value(2) , "Ok field has value 2");
 ok( ! $f->field('aset')->has_value(123) , "Ok field has no value 123");
@@ -81,7 +81,7 @@ ok( ! $f->field('aset')->has_value(2), "A clear form field doesnt contain any va
   ## Test add and remove values.
   package MyFormSetAdd;
   use Moose;
-  extends qw/JCOM::Form/;
+  extends qw/Form::Toolkit::Form/;
   sub build_fields{
     my ($self) = @_;
     $self->add_field('Set' , 'aset' );

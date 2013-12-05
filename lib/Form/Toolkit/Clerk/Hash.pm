@@ -1,12 +1,12 @@
-package JCOM::Form::Clerk::Hash;
+package Form::Toolkit::Clerk::Hash;
 use Moose;
 use DateTime::Format::ISO8601;
 
-extends qw/JCOM::Form::Clerk/;
+extends qw/Form::Toolkit::Clerk/;
 
 =head1 NAME
 
-JCOM::Form::Clerk::Hash - A Clerk that will fill a form from a hash of values.
+Form::Toolkit::Clerk::Hash - A Clerk that will fill a form from a hash of values.
 
 =cut
 

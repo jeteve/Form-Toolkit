@@ -1,4 +1,4 @@
-package JCOM::Form::Clerk;
+package Form::Toolkit::Clerk;
 use Moose;
 
 has 'source' => ( required => 1 , is => 'ro' );
@@ -7,7 +7,7 @@ has '_date_parser' => ( is => 'ro' , default => sub{ DateTime::Format::ISO8601->
 
 =head1 NAME
 
-JCOM::Form::Clerk - A form clerk that can fill a form from some source.
+Form::Toolkit::Clerk - A form clerk that can fill a form from some source.
 
 =head2 SYNOPSIS
 
@@ -40,7 +40,7 @@ sub _get_source_value{
 
 Fills the given form with values from the source hash.
 
-See superclass L<JCOM::Form::Clerk> for details.
+See superclass L<Form::Toolkit::Clerk> for details.
 
 =cut
 

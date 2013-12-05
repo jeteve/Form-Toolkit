@@ -1,11 +1,11 @@
-package JCOM::Form::Field::Set;
+package Form::Toolkit::Field::Set;
 use Moose;
 
-extends qw/JCOM::Form::Field/;
+extends qw/Form::Toolkit::Field/;
 
 =head1 NAME
 
-JCOM::Form::Field::Set - A Set of Pure scalar Value's (Not references).
+Form::Toolkit::Field::Set - A Set of Pure scalar Value's (Not references).
 
 =head1 NOTES
 

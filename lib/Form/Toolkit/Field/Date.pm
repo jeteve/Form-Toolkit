@@ -1,12 +1,12 @@
-package JCOM::Form::Field::Date;
+package Form::Toolkit::Field::Date;
 use Moose;
 use DateTime;
 
-extends qw/JCOM::Form::Field/;
+extends qw/Form::Toolkit::Field/;
 
 =head1 NAME
 
-JCOM::Form::Field::Date - A single DateTime field.
+Form::Toolkit::Field::Date - A single DateTime field.
 
 =cut
 

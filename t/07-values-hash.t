@@ -4,13 +4,13 @@ use warnings;
 use Data::Dumper;
 use Test::More;
 use Test::Exception;
-use JCOM::Form;
-use JCOM::Form::Clerk::Hash;
+use Form::Toolkit::Form;
+use Form::Toolkit::Clerk::Hash;
 
 
 package MyForm4Hash;
 use Moose;
-extends qw/JCOM::Form/;
+extends qw/Form::Toolkit::Form/;
 
 sub build_fields{
   my ($self) = @_;
@@ -71,7 +71,7 @@ my @input_hashes = (
 
 foreach my $input_hash ( @input_hashes ){
   ## Test valid input
-  JCOM::Form::Clerk::Hash->new( source => $input_hash )->fill_form($f);
+  Form::Toolkit::Clerk::Hash->new( source => $input_hash )->fill_form($f);
   ## diag(Dumper($f->dump_errors()));
   ok( !$f->has_errors() , "Ok not errors");
   my $h_f = $f->values_hash();

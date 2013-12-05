@@ -1,6 +1,6 @@
-package JCOM::Form::FieldRole::MinMax;
+package Form::Toolkit::FieldRole::MinMax;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 has 'v_min' => ( is => 'rw' , isa => 'Num' , clearer => 'clear_min');
 has 'v_max' => ( is => 'rw' , isa => 'Num' , clearer => 'clear_max');
@@ -10,7 +10,7 @@ has '_v_max_exclude' => ( is => 'rw' , isa => 'Bool' , default => 0);
 
 =head1 NAME
 
-JCOM::Form::FieldRole::MinMax - A Role that add a min and a max value to a field (for Numeric fields of course).
+Form::Toolkit::FieldRole::MinMax - A Role that add a min and a max value to a field (for Numeric fields of course).
 
 =head2 set_min
 

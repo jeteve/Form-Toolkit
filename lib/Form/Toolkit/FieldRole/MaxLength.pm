@@ -1,10 +1,10 @@
-package JCOM::Form::FieldRole::MaxLength;
+package Form::Toolkit::FieldRole::MaxLength;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::MaxLength - A Role that gives a max_length to this field.
+Form::Toolkit::FieldRole::MaxLength - A Role that gives a max_length to this field.
 
 =cut
 

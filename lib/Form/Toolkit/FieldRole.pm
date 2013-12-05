@@ -1,10 +1,10 @@
-package JCOM::Form::FieldRole;
+package Form::Toolkit::FieldRole;
 use Moose::Role;
 requires qw/validate add_error/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole - A Base role for field roles.
+Form::Toolkit::FieldRole - A Base role for field roles.
 
 =cut
 

@@ -1,9 +1,9 @@
-package JCOM::Form;
-use Moose -traits => 'JCOM::Form::Meta::Class::Trait::HasID';
+package Form::Toolkit::Form;
+use Moose -traits => 'Form::Toolkit::Meta::Class::Trait::HasID';
 use Class::MOP;
 
-use JCOM::Form::Field;
-use JCOM::Form::Field::String;
+use Form::Toolkit::Field;
+use Form::Toolkit::Field::String;
 
 use Scalar::Util;
 
@@ -12,7 +12,7 @@ with qw(MooseX::Clone);
 
 =head1 NAME
 
-JCOM::Form - A Moose base class for Form implementation
+Form::Toolkit::Form - A Moose base class for Form implementation
 
 =head1 VERSION
 
@@ -24,7 +24,7 @@ our $VERSION = '0.03';
 
 __PACKAGE__->meta->id_prefix('form_');
 
-has 'fields' => ( isa => 'ArrayRef[JCOM::Form::Field]', is => 'ro' , required => 1 , default => sub{ [] } ,
+has 'fields' => ( isa => 'ArrayRef[Form::Toolkit::Field]', is => 'ro' , required => 1 , default => sub{ [] } ,
                 traits => ['Clone']);
 has '_fields_idx' => ( isa => 'HashRef[Int]', is => 'ro' , required => 1, default => sub{ {} },
                      traits => [ 'Clone' ]);
@@ -134,7 +134,7 @@ sub add_error{
 Usage:
 
    $this->add_field('field_name');
-   $this->add_field('FieldType', 'field_name'); ## 'FieldType' is turned into JCOM::Form::Field::FieldType'.
+   $this->add_field('FieldType', 'field_name'); ## 'FieldType' is turned into Form::Toolkit::Field::FieldType'.
    $this->add_field($field_instance);
 
 =cut
@@ -143,7 +143,7 @@ sub add_field{
   my ($self, @rest)  = @_;
 
   my $field = shift @rest;
-  if( ref($field) && $field->isa('JCOM::Form::Field') ){
+  if( ref($field) && $field->isa('Form::Toolkit::Field') ){
     return $self->_add_field($field);
   }
   if( ref( $field ) ){ confess("Argument $field not supported") ; }
@@ -160,7 +160,7 @@ sub add_field{
     if( $f_class =~ /^\+/ ){
       $f_class =~ s/^\+//;
     }else{
-      $f_class = 'JCOM::Form::Field::'.$f_class;
+      $f_class = 'Form::Toolkit::Field::'.$f_class;
     }
     Class::MOP::load_class( $f_class );
     my $new_instance = $f_class->new({ form => $self , name => $name  });
@@ -174,7 +174,7 @@ sub add_field{
 sub _add_field{
   my ($self , $field ) = @_;
   $field //= '';
-  unless( ref($field) && $field->isa('JCOM::Form::Field') ){ confess("Please give a JCOM::Form::Field Instance, not a $field"); }
+  unless( ref($field) && $field->isa('Form::Toolkit::Field') ){ confess("Please give a JCOM::Form::Field Instance, not a $field"); }
 
   if( $self->field($field->name()) ){
     confess("A field named '".$field->name()."' already exists in this form");
@@ -286,7 +286,7 @@ Returns a hash of values like that:
   multipleb => []
 }
 
-You can feed this hash to the L<JCOM::Form::Clerk::Hash>
+You can feed this hash to the L<Form::Toolkit::Clerk::Hash>
 got populate a similar form.
 
 =cut
@@ -308,7 +308,7 @@ Jerome Eteve, C<< <jerome.eteve at gmail.com> >>
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-jcom-form at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=JCOM-Form>.  I will be notified, and then you'll
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Form::Toolkit-Form>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
 
@@ -318,7 +318,7 @@ automatically be notified of progress on your bug as I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc JCOM::Form
+    perldoc Form::Toolkit::Form
 
 
 You can also look for information at:
@@ -327,19 +327,19 @@ You can also look for information at:
 
 =item * RT: CPAN's request tracker
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=JCOM-Form>
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Form::Toolkit-Form>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 
-L<http://annocpan.org/dist/JCOM-Form>
+L<http://annocpan.org/dist/Form::Toolkit-Form>
 
 =item * CPAN Ratings
 
-L<http://cpanratings.perl.org/d/JCOM-Form>
+L<http://cpanratings.perl.org/d/Form::Toolkit-Form>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/JCOM-Form/>
+L<http://search.cpan.org/dist/Form::Toolkit-Form/>
 
 =back
 
@@ -361,4 +361,4 @@ See http://dev.perl.org/licenses/ for more information.
 =cut
 
 __PACKAGE__->meta->make_immutable();
-1; # End of JCOM::Form
+1; # End of Form::Toolkit::Form

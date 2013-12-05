@@ -1,10 +1,10 @@
-package JCOM::Form::FieldRole::InKVPairs;
+package Form::Toolkit::FieldRole::InKVPairs;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole::HasKVPairs/;
+with qw/Form::Toolkit::FieldRole::HasKVPairs/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::InKVPairs - A Role that makes sure a _Set_ field only contains values from the in_kvpairs (a L<JCOM::KVPairs>) set
+Form::Toolkit::FieldRole::InKVPairs - A Role that makes sure a _Set_ field only contains values from the in_kvpairs (a L<Form::Toolkit::KVPairs>) set
 
 =cut
 

@@ -1,12 +1,12 @@
-package JCOM::Form::FieldRole::Mandatory;
+package Form::Toolkit::FieldRole::Mandatory;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 has 'allow_blank' => ( is => 'ro', isa => 'Bool', default => 0 );
 
 =head1 NAME
 
-JCOM::Form::FieldRole::Mandatory - A Role that makes the field mandatory
+Form::Toolkit::FieldRole::Mandatory - A Role that makes the field mandatory
 
 =head2 allow_blank
 

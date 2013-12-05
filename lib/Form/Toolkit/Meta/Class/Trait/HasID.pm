@@ -1,18 +1,17 @@
-package JCOM::Form::Meta::Class::Trait::HasID;
+package Form::Toolkit::Meta::Class::Trait::HasID;
 use Moose::Role;
-use JCOM::Sequence;
 
 =head2 NAME
 
-JCOM::Form::Meta::Class::Trait::HasID - Gives a meta->id and a meta->id_prefix attribute to this trait consumer.
+Form::Toolkit::Meta::Class::Trait::HasID - Gives a meta->id and a meta->id_prefix attribute to this trait consumer.
 
 =cut
 
 {
-  my $FORMSEQ = JCOM::Sequence->new();
+  my $FORMSEQ = 0;
   sub _next_default_id{
     my ($self) = @_;
-    return ( $self->id_prefix() // $self ).$FORMSEQ->next();
+    return ( $self->id_prefix() // $self ).(++$FORMSEQ);
   }
 }
 

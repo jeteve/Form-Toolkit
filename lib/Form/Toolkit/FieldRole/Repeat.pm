@@ -1,14 +1,14 @@
-package JCOM::Form::FieldRole::Repeat;
+package Form::Toolkit::FieldRole::Repeat;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::Repeat - A Role that requires this field to repeat another one
+Form::Toolkit::FieldRole::Repeat - A Role that requires this field to repeat another one
 
 =cut
 
-has 'repeat_field' => ( is => 'rw' , isa => 'JCOM::Form::Field' , required => 0);
+has 'repeat_field' => ( is => 'rw' , isa => 'Form::Toolkit::Field' , required => 0);
 
 after 'validate' => sub{
   my ($self) = @_;

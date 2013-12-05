@@ -1,5 +1,5 @@
-package JCOM::Form::Field;
-use Moose -traits => 'JCOM::Form::Meta::Class::Trait::HasShortClass';
+package Form::Toolkit::Field;
+use Moose -traits => 'Form::Toolkit::Meta::Class::Trait::HasShortClass';
 use Moose::Util qw/apply_all_roles/;
 
 with qw(MooseX::Clone);
@@ -8,11 +8,11 @@ __PACKAGE__->meta->short_class('GenericField');
 
 =head1 NAME
 
-JCOM::Form::Field - A field for JCOM::Form s
+Form::Toolkit::Field - A field for JCOM::Form s
 
 =cut
 
-has 'form' => ( isa => 'JCOM::Form' , is => 'ro' , weak_ref => 1 , required => 1 );
+has 'form' => ( isa => 'Form::Toolkit::Form' , is => 'ro' , weak_ref => 1 , required => 1 );
 
 has 'name' => ( isa => 'Str' , is => 'ro' , required => 1 , traits => [ 'Clone' ]);
 has 'help' => ( isa => 'Str', is => 'rw', traits => [ 'Clone' ]);
@@ -160,7 +160,7 @@ sub clear{
 
 =head2 add_role
 
-Adds a Subrole of L<JCOM::Form::FieldRole> or a custom defined FormRole.
+Adds a Subrole of L<Form::Toolkit::FieldRole> or a custom defined FormRole.
 Additionnaly, you can provide new parameters if the role you're applying
 requires some mandatory attributes.
 
@@ -181,7 +181,7 @@ sub add_role{
   if( $role =~ /^\+/ ){
     $role =~ s/^\+//;
   }else{
-    $role = 'JCOM::Form::FieldRole::'.$role;
+    $role = 'Form::Toolkit::FieldRole::'.$role;
   }
 
   ## Maintain important meta attributes.
@@ -232,7 +232,7 @@ sub does_role{
   if( $role =~ /^\+/ ){
     $role =~ s/^\+//;
   }else{
-    $role = 'JCOM::Form::FieldRole::'.$role;
+    $role = 'Form::Toolkit::FieldRole::'.$role;
   }
   return $self->does($role);
 }

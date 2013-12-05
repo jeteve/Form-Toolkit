@@ -1,19 +1,19 @@
-package JCOM::Form::Test;
+package Form::Toolkit::Test;
 use Moose;
 use Class::MOP;
 use Module::Pluggable::Object;
 
 =head1 NAME
 
-JCOM::Form::Test - A Test form containing all the supported native field types.
+Form::Toolkit::Test - A Test form containing all the supported native field types.
 
 =cut
 
-extends qw/JCOM::Form/;
+extends qw/Form::Toolkit::Form/;
 
 =head2 build_fields
 
-See super class L<JCOM::Form>
+See super class L<Form::Toolkit::Form>
 
 =cut
 
@@ -21,20 +21,20 @@ sub build_fields{
   my ($self) = @_;
 
   my @res = ();
-  my $mp = Module::Pluggable::Object->new( search_path => 'JCOM::Form::Field' );
+  my $mp = Module::Pluggable::Object->new( search_path => 'Form::Toolkit::Field' );
   foreach my $field_class ( $mp->plugins() ){
     Class::MOP::load_class($field_class);
     $self->add_field('+'.$field_class , 'field_'.$field_class->meta->short_class() );
   }
 
   ## Add a mandatory field.
-  my $field = JCOM::Form::Field::String->new({ name => 'mandatory_str' , form => $self });
+  my $field = Form::Toolkit::Field::String->new({ name => 'mandatory_str' , form => $self });
   $self->add_field($field);
   $field->add_role('Mandatory');
 
-  $field = JCOM::Form::Field::String->new({ name => 'mandatory_and_long' , form => $self });
+  $field = Form::Toolkit::Field::String->new({ name => 'mandatory_and_long' , form => $self });
   $self->add_field($field);
-  $field->add_role('+JCOM::Form::FieldRole::Mandatory')->add_role('MinLength')->min_length(3);
+  $field->add_role('+Form::Toolkit::FieldRole::Mandatory')->add_role('MinLength')->min_length(3);
 
 
   my $email = $self->add_field('String' , 'email');

@@ -1,11 +1,11 @@
-package JCOM::Form::FieldRole::Trimmed;
+package Form::Toolkit::FieldRole::Trimmed;
 use Moose::Role;
 
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::Trimmed - A Role that trims the value to avoid heading and trailing spacing characters.
+Form::Toolkit::FieldRole::Trimmed - A Role that trims the value to avoid heading and trailing spacing characters.
 
 =cut
 

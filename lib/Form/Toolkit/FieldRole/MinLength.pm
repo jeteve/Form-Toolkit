@@ -1,10 +1,10 @@
-package JCOM::Form::FieldRole::MinLength;
+package Form::Toolkit::FieldRole::MinLength;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 =head1 NAME
 
-JCOM::Form::FieldRole::MinLength - A Role that gives a min_length to this field.
+Form::Toolkit::FieldRole::MinLength - A Role that gives a min_length to this field.
 
 =cut
 

@@ -1,6 +1,6 @@
-package JCOM::Form::FieldRole::RegExpMatch;
+package Form::Toolkit::FieldRole::RegExpMatch;
 use Moose::Role;
-with qw/JCOM::Form::FieldRole/;
+with qw/Form::Toolkit::FieldRole/;
 
 has 'regexp_match' => ( is => 'ro' , isa => 'RegexpRef' , required => 1);
 has 'regexp_match_desc' => ( is => 'ro' , isa => 'Str', required => 1, lazy => 1 , builder => '_build_regexp_match_desc');
@@ -14,7 +14,7 @@ sub _build_regexp_match_desc{
 
 =head1 NAME
 
-JCOM::Form::FieldRole::RegExpMatch - A Role that checks the value matches a regex
+Form::Toolkit::FieldRole::RegExpMatch - A Role that checks the value matches a regex
 
 =head2 regexp_match
 
