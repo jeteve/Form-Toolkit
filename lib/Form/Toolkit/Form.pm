@@ -1,4 +1,5 @@
 package Form::Toolkit::Form;
+require 5.010_000;
 use Moose -traits => 'Form::Toolkit::Meta::Class::Trait::HasID';
 use Class::MOP;
 

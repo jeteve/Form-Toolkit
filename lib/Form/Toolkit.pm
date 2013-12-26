@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+require 5.010_000;
 package Form::Toolkit;
 
 1;
