@@ -1,7 +1,7 @@
 package Form::Toolkit::Form;
 require 5.010_000;
 use Moose -traits => 'Form::Toolkit::Meta::Class::Trait::HasID';
-use Class::MOP;
+use Class::Load;
 
 use Form::Toolkit::Clerk::Hash;
 
@@ -158,7 +158,7 @@ sub add_field{
     }else{
       $f_class = 'Form::Toolkit::Field::'.$f_class;
     }
-    Class::MOP::load_class( $f_class );
+    Class::Load::load_class( $f_class );
     my $new_instance = $f_class->new({ form => $self , name => $name  });
     $ret =  $self->_add_field($new_instance);
   };

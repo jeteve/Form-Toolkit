@@ -1,6 +1,6 @@
 package Form::Toolkit::Test;
 use Moose;
-use Class::MOP;
+use Class::Load;
 use Module::Pluggable::Object;
 
 =head1 NAME
@@ -23,7 +23,7 @@ sub build_fields{
   my @res = ();
   my $mp = Module::Pluggable::Object->new( search_path => 'Form::Toolkit::Field' );
   foreach my $field_class ( $mp->plugins() ){
-    Class::MOP::load_class($field_class);
+    Class::Load::load_class($field_class);
     $self->add_field('+'.$field_class , 'field_'.$field_class->meta->short_class() );
   }
 

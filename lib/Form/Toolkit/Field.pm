@@ -1,4 +1,5 @@
 package Form::Toolkit::Field;
+use Class::Load;
 use Moose -traits => 'Form::Toolkit::Meta::Class::Trait::HasShortClass';
 use Moose::Util qw/apply_all_roles/;
 
@@ -191,7 +192,7 @@ sub add_role{
 
   ## This is better, as apply can be used to add new arguments
   ## See http://search.cpan.org/~ether/Moose-2.0801/lib/Moose/Role.pm#APPLYING_ROLES
-  Class::MOP::load_class( $role );
+  Class::Load::load_class( $role );
   $role->meta->apply($self, rebless_params => $new_args );
 
   ## Maintain important meta attributes.
