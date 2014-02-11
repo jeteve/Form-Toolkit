@@ -319,7 +319,7 @@ Usage:
 
 sub litteral{
   my ($self) = @_;
-  return MIME::Base64::encode_base64(ref($self) .'|'. $self->jsoner()->encode($self->values_hash()));
+  return MIME::Base64::encode_base64url(ref($self) .'|'. $self->jsoner()->encode($self->values_hash()));
 }
 
 =head2 from_litteral
@@ -339,7 +339,7 @@ Usage:
 sub from_litteral{
   my ($class , $litteral, $attributes ) = @_;
   $attributes ||= {};
-  my ($fclass, $json) = split('\|', MIME::Base64::decode_base64($litteral) , 2 );
+  my ($fclass, $json) = split('\|', MIME::Base64::decode_base64url($litteral) , 2 );
   my $jsoner = JSON->new();
   my $values_hash = $jsoner->decode($json);
   Class::Load::load_class($fclass);

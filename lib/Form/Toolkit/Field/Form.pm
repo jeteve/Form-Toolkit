@@ -5,7 +5,7 @@ extends qw/Form::Toolkit::Field/;
 
 =head1 NAME
 
-Form::Toolkit::Field::Set - A Set of Pure scalar Value's (Not references).
+Form::Toolkit::Field::Form - A field that can hold another nested L<Form::Toolkit::Form>
 
 =head1 NOTES
 
