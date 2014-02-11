@@ -1,0 +1,33 @@
+package Form::Toolkit::Field::Form;
+use Moose;
+
+extends qw/Form::Toolkit::Field/;
+
+=head1 NAME
+
+Form::Toolkit::Field::Set - A Set of Pure scalar Value's (Not references).
+
+=head1 NOTES
+
+The 'value' field of this is in fact a set of values.
+
+=cut
+
+has '+value' => ( isa => 'Form::Toolkit::Form' );
+
+__PACKAGE__->meta->short_class('Form');
+__PACKAGE__->meta->make_immutable();
+
+=head2 value_struct
+
+See superclass.
+
+=cut
+
+sub value_struct{
+  my ($self) = @_;
+  return $self->value()->litteral();
+}
+
+__PACKAGE__->meta->make_immutable();
+

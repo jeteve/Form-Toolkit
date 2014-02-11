@@ -1,6 +1,7 @@
 package Form::Toolkit::Clerk;
 use Moose;
 use DateTime::Format::ISO8601;
+use JSON;
 
 has 'source' => ( required => 1 , is => 'ro' );
 
@@ -50,7 +51,7 @@ sub visit_form{
 
   foreach my $field ( @{$form->fields()} ){
     my $m = '_fill_field_'.$field->meta->short_class();
-    $self->$m($field);
+    $self->$m($field, $form);
     $field->validate();
   }
   return $form;
@@ -85,6 +86,17 @@ sub _fill_field_Date{
   }else{
     $field->clear_value();
   }
+}
+
+sub _fill_field_Form{
+  my ($self, $field , $container_form ) = @_;
+  my $str = $self->_get_source_value($field);
+  unless(  $str ){
+    $field->clear_value();
+    return;
+  }
+
+  $field->value($container_form->from_litteral($str));
 }
 
 sub _fill_field_String{

@@ -128,4 +128,5 @@ sub clear{
    $self->_values_idx({});
 };
 
-1;
+__PACKAGE__->meta->make_immutable();
+
