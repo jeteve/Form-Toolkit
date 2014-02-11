@@ -307,7 +307,7 @@ sub values_hash{
   return $ret;
 }
 
-=head2 litteral
+=head2 literal
 
 Returns a litteral representation of this form (as a Base64 encoded JSON byte string).
 
@@ -317,12 +317,12 @@ Usage:
 
 =cut
 
-sub litteral{
+sub literal{
   my ($self) = @_;
   return MIME::Base64::encode_base64url(ref($self) .'|'. $self->jsoner()->encode($self->values_hash()));
 }
 
-=head2 from_litteral
+=head2 from_literal
 
 Class or instance method. Builds a new instance of form from the given litteral (See litteral).
 
@@ -332,11 +332,11 @@ as an instance method by the form filling Clerks. See example in test 11.
 
 Usage:
 
-  my $form = $this->from_litteral($litteral);
+  my $form = $this->from_literal($litteral);
 
 =cut
 
-sub from_litteral{
+sub from_literal{
   my ($class , $litteral, $attributes ) = @_;
   $attributes ||= {};
   my ($fclass, $json) = split('\|', MIME::Base64::decode_base64url($litteral) , 2 );

@@ -66,8 +66,8 @@ $form->field('a_int')->value(314);
 $form->field('a_set')->value([ 1, 2, 3, 4 ]);
 $form->field('a_string')->value("HAHAHAHA");
 
-ok(my $litteral = $form->litteral() , "Ok got litteral");
-ok( my $lb = Form::Toolkit::Form->from_litteral($litteral) , "Ok loopback");
+ok(my $litteral = $form->literal() , "Ok got litteral");
+ok( my $lb = Form::Toolkit::Form->from_literal($litteral) , "Ok loopback");
 use Data::Dumper;
 is_deeply($lb->values_hash() , $form->values_hash() , "Ok loopback form has got same values");
 }

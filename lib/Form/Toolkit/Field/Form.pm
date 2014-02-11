@@ -26,7 +26,7 @@ See superclass.
 
 sub value_struct{
   my ($self) = @_;
-  return $self->value()->litteral();
+  return $self->value()->literal();
 }
 
 __PACKAGE__->meta->make_immutable();

@@ -33,9 +33,9 @@ sub build_fields{
   my $sf = $self->add_field('Form' , 'aform' );
 }
 
-sub from_litteral{
-  my ($self, $litteral) = @_;
-  return $self->next::method($litteral , { stuff => $self->stuff() });
+sub from_literal{
+  my ($self, $literal) = @_;
+  return $self->next::method($literal , { stuff => $self->stuff() });
 }
 
 1;

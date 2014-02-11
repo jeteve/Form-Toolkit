@@ -96,7 +96,7 @@ sub _fill_field_Form{
     return;
   }
 
-  $field->value($container_form->from_litteral($str));
+  $field->value($container_form->from_literal($str));
 }
 
 sub _fill_field_String{
