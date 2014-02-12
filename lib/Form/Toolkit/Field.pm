@@ -1,4 +1,5 @@
 package Form::Toolkit::Field;
+use Class::Load;
 use Moose -traits => 'Form::Toolkit::Meta::Class::Trait::HasShortClass';
 use Moose::Util qw/apply_all_roles/;
 
