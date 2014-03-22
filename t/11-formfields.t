@@ -52,6 +52,8 @@ my $snapshot = $container->values_hash();
 $container->clear();
 ok( ! $container->field('aform')->value() , "Ok value is gone");
 
+ok( my $empty_hash = $container->values_hash() , "Ok can get a value hash even on empty container");
+
 $container->fill_hash($snapshot);
 
 is( $container->field('aform')->value()->field('a_string')->value(), 'hahaha' , "Good value back in nested form");
