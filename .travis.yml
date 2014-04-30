@@ -5,3 +5,7 @@ perl:
   - "5.12"
   - "5.10"
 
+before_script:
+   - cpanm Dist::Zilla
+   - dzil authordeps | cpanm
+   - dzil listdeps | cpanm
