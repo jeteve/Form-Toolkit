@@ -7,8 +7,8 @@ perl:
 
 install:
    - cpanm --quiet Dist::Zilla
-   - dzil authordeps | cpanm --quiet
-   - dzil listdeps | cpanm --quiet
+   - dzil authordeps | cpanm --quiet --notest
+   - dzil listdeps | cpanm --quiet --notest
 
 script:
    - dzil test
